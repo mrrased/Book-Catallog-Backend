@@ -30,6 +30,7 @@ model User {
 model Category {
   id    String @id @default(uuid())
   title String
+  books Book[]
 }
 
 model Book {
@@ -39,7 +40,8 @@ model Book {
   price            Float
   genre            String
   publicationDate  String
-  categoryId       String            @default(uuid())
+  categoryId       String
+  category         Category          @relation(fields: [categoryId], references: [id])
   reviewAndRatings ReviewAndRating[]
 
   @@map("book")

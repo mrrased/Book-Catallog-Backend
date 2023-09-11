@@ -9,7 +9,7 @@ const createCategory = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User created successfully!',
+    message: 'Category created successfully',
     data: result,
   });
 });
@@ -19,12 +19,24 @@ const getAllCategory = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Users retrieved successfully',
+    message: 'Categories fetched successfully',
     data: result.data,
+  });
+});
+
+const getSingleCategory = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await CategoryService.getSingleCategory(id);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Category fetched successfully',
+    data: result,
   });
 });
 
 export const CategoryController = {
   createCategory,
   getAllCategory,
+  getSingleCategory,
 };
