@@ -1,4 +1,5 @@
 import express from 'express';
+import validateRequest from '../../middlewares/validateRequest';
 import { UserController } from './user.Controller';
 import { UserValidation } from './user.Validation';
 
@@ -13,5 +14,7 @@ router.patch(
   validateRequest(UserValidation.updateUser),
   UserController.updateUser
 );
+
+router.delete('/:id', UserController.deleteUser);
 
 export const UserRoutes = router;
