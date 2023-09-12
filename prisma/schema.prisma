@@ -31,6 +31,8 @@ model Category {
   id    String @id @default(uuid())
   title String
   books Book[]
+
+  @@map("category")
 }
 
 model Book {

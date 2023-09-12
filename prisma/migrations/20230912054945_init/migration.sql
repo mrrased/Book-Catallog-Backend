@@ -15,11 +15,11 @@ CREATE TABLE "user" (
 );
 
 -- CreateTable
-CREATE TABLE "Category" (
+CREATE TABLE "category" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
 
-    CONSTRAINT "Category_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "category_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -59,6 +59,9 @@ CREATE TABLE "order" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
+
+-- AddForeignKey
+ALTER TABLE "book" ADD CONSTRAINT "book_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "review_and_rating" ADD CONSTRAINT "review_and_rating_userId_fkey" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
