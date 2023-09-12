@@ -2,6 +2,7 @@ import express from 'express';
 import { AuthRoutes } from '../modules/auth/auth.Routes';
 import { BooksRoutes } from '../modules/books/books.Route';
 import { CategoryRoutes } from '../modules/category/category.Routes';
+import { OrderRoutes } from '../modules/order/order.Route';
 import { UserRoutes } from '../modules/user/user.Routes';
 // import { academicDepartmentRoutes } from '../modules/academicDepartment/academicDepartment.routes';
 // import { academicFacultyRoutes } from '../modules/academicFaculty/academicFaculty.routes';
@@ -37,6 +38,10 @@ const moduleRoutes = [
   {
     path: '/books',
     route: BooksRoutes,
+  },
+  {
+    path: '/orders',
+    route: OrderRoutes,
   },
 ];
 
