@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
+import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
+import { BookFilterableFields } from './books.Constant';
 import { BooksService } from './books.Service';
 
 const createBook = catchAsync(async (req: Request, res: Response) => {
@@ -15,11 +17,15 @@ const createBook = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getAllBooks = catchAsync(async (req: Request, res: Response) => {
-  const result = await BooksService.getAllBooks();
+  const filters = pick(req.query, BookFilterableFields);
+  const options = pick(req.query, ['size', 'page', 'sortBy', 'sortOrder']);
+
+  const result = await BooksService.getAllBooks(filters, options);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Books fetched successfully',
+    meta: result.meta,
     data: result.data,
   });
 });
@@ -32,6 +38,19 @@ const getSingleBook = catchAsync(async (req: Request, res: Response) => {
     success: true,
     message: 'Book fetched successfully',
     data: result,
+  });
+});
+
+const getBookByCategory = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const options = pick(req.query, ['size', 'page', 'sortBy', 'sortOrder']);
+  const result = await BooksService.getBookByCategory(id, options);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Books with associated category data fetched successfully',
+    meta: result.meta,
+    data: result.data,
   });
 });
 
@@ -64,4 +83,5 @@ export const BooksController = {
   getSingleBook,
   updateBook,
   deleteBook,
+  getBookByCategory,
 };

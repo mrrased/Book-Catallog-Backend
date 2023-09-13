@@ -7,7 +7,7 @@ router.post('/create-order', OrderController.createOrder);
 
 router.get('/', OrderController.getAllOrder);
 
-// router.get('/:id', UserController.getSingleUser);
+router.get('/:id', OrderController.getSingleOrder);
 
 // router.patch(
 //   '/:id',
