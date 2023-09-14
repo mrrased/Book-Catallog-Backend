@@ -38,8 +38,6 @@ const loginUser = async (payload: User): Promise<IUser> => {
     },
   });
 
-  console.log(user);
-
   if (!user) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'User does not exist');
   }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Secret } from 'jsonwebtoken';
 import config from '../../../config';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
@@ -9,16 +10,22 @@ const getProfile = async (token: any): Promise<IUser | null> => {
     token,
     config.jwt.secret as Secret
   );
-  console.log(verifiedUser);
 
   const result = await prisma.user.findUnique({
     where: {
       id: verifiedUser.userId,
     },
+    select: {
+      name: true,
+      email: true,
+      role: true,
+      contactNo: true,
+      address: true,
+      profileImg: true,
+    },
   });
-  const { password, id, createdAt, updatedAt, ...data } = result;
 
-  return data;
+  return result;
 };
 
 export const ProfileService = {
