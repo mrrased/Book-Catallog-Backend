@@ -4,7 +4,7 @@ import { Prisma } from '@prisma/client';
 export type IOrder = {
   userId: any;
   id: string;
-  orderedBooks: Prisma.JsonValue;
+  orderedBooks: Prisma.JsonArray;
   status: string;
   createdAt: Date;
 };

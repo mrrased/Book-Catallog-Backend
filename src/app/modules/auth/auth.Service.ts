@@ -6,14 +6,23 @@ import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
 import prisma from '../../../shared/prisma';
-import { IUser } from './auth.Interface';
+import { ICreateUser, IUser } from './auth.Interface';
 
-const CreateUser = async (data: User): Promise<User> => {
+const CreateUser = async (data: User): Promise<ICreateUser> => {
   const hashedPassword = await bcrypt.hash(data.password, 10);
   const result = await prisma.user.create({
     data: {
       ...data,
       password: hashedPassword,
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      contactNo: true,
+      address: true,
+      profileImg: true,
     },
   });
 
