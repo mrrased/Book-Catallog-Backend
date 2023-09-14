@@ -4,32 +4,32 @@ Application Routes:
 
 # User
 
-    api/v1/auth/signup (POST)
-    api/v1/users (GET)
-    api/v1/users/5e27b1d1-92fd-48f7-84dd-3b0d2c00406c (Single GET)
-    api/v1/users/5e27b1d1-92fd-48f7-84dd-3b0d2c00406c (PATCH)
-    api/v1/users/5e27b1d1-92fd-48f7-84dd-3b0d2c00406c (DELETE)
-    api/v1/profile (GET)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/auth/signup (POST)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/users (GET)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/users/ea5f0b4f-19f9-4dc9-a2a1-3583ef162282 (Single GET)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/users/ea5f0b4f-19f9-4dc9-a2a1-3583ef162282 (PATCH)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/users/ea5f0b4f-19f9-4dc9-a2a1-3583ef162282 (DELETE)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/profile (GET)
 
 # Category
 
-    api/v1/categories/create-category (POST)
-    api/v1/categories (GET)
-    api/v1/categories/eea154c9-ef63-4f51-a496-de675cb81adb (Single GET)
-    api/v1/categories/eea154c9-ef63-4f51-a496-de675cb81adb (PATCH)
-    api/v1/categories/eea154c9-ef63-4f51-a496-de675cb81adb (DELETE)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/categories/create-category (POST)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/categories (GET)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/categories/fcf5341f-950b-49e8-981c-a0b3a5b00f3b (Single GET)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/categories/fcf5341f-950b-49e8-981c-a0b3a5b00f3b (PATCH)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/categories/fcf5341f-950b-49e8-981c-a0b3a5b00f3b (DELETE)
 
 # Books
 
-    api/v1/books/create-book (POST)
-    api/v1/books (GET)
-    api/v1/books/:categoryId/category (GET)
-    api/v1/books/:id (GET)
-    api/v1/books/:id (PATCH)
-    api/v1/books/:id (DELETE)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/books/create-book (POST)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/books (GET)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/books/fcf5341f-950b-49e8-981c-a0b3a5b00f3b/category (GET)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/books/51906f01-9869-46e4-bb5b-ef6fdb7a6eb6 (GET)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/books/51906f01-9869-46e4-bb5b-ef6fdb7a6eb6 (PATCH)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/books/51906f01-9869-46e4-bb5b-ef6fdb7a6eb6 (DELETE)
 
 # Orders
 
-    api/v1/orders/create-order (POST)
-    api/v1/orders (GET)
-    api/v1/orders/:id (GET)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/orders/create-order (POST)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/orders (GET)
+    https://book-catellog-backend-sooty.vercel.app/api/v1/orders/:id (GET)

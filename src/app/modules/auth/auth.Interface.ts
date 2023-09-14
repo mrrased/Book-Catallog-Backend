@@ -1,6 +1,5 @@
 export type IUser = {
   token?: string | undefined;
-  refreshToken?: string | undefined;
 };
 
 export type ICreateUser = {
