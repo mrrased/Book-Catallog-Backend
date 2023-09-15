@@ -40,6 +40,24 @@ export type ReviewAndRating = $Result.DefaultSelection<Prisma.$ReviewAndRatingPa
 export type Order = $Result.DefaultSelection<Prisma.$OrderPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const OrderStatus: {
+  PENDING: 'PENDING',
+  SHIPPED: 'SHIPPED',
+  DELIVERED: 'DELIVERED'
+};
+
+export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus]
+
+}
+
+export type OrderStatus = $Enums.OrderStatus
+
+export const OrderStatus: typeof $Enums.OrderStatus
+
+/**
  * ##  Prisma Client ʲˢ
  * 
  * Type-safe database client for TypeScript & Node.js
@@ -5200,14 +5218,14 @@ export namespace Prisma {
 
   export type OrderMinAggregateOutputType = {
     id: string | null
-    status: string | null
+    status: $Enums.OrderStatus | null
     createdAt: Date | null
     userId: string | null
   }
 
   export type OrderMaxAggregateOutputType = {
     id: string | null
-    status: string | null
+    status: $Enums.OrderStatus | null
     createdAt: Date | null
     userId: string | null
   }
@@ -5320,7 +5338,7 @@ export namespace Prisma {
   export type OrderGroupByOutputType = {
     id: string
     orderedBooks: JsonValue | null
-    status: string
+    status: $Enums.OrderStatus | null
     createdAt: Date
     userId: string
     _count: OrderCountAggregateOutputType | null
@@ -5372,7 +5390,7 @@ export namespace Prisma {
     scalars: $Extensions.GetResult<{
       id: string
       orderedBooks: Prisma.JsonValue | null
-      status: string
+      status: $Enums.OrderStatus | null
       createdAt: Date
       userId: string
     }, ExtArgs["result"]["order"]>
@@ -5772,7 +5790,7 @@ export namespace Prisma {
   interface OrderFieldRefs {
     readonly id: FieldRef<"Order", 'String'>
     readonly orderedBooks: FieldRef<"Order", 'Json'>
-    readonly status: FieldRef<"Order", 'String'>
+    readonly status: FieldRef<"Order", 'OrderStatus'>
     readonly createdAt: FieldRef<"Order", 'DateTime'>
     readonly userId: FieldRef<"Order", 'String'>
   }
@@ -6282,6 +6300,20 @@ export namespace Prisma {
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
     
+
+
+  /**
+   * Reference to a field of type 'OrderStatus'
+   */
+  export type EnumOrderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OrderStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'OrderStatus[]'
+   */
+  export type ListEnumOrderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OrderStatus[]'>
+    
   /**
    * Deep Input Types
    */
@@ -6546,7 +6578,7 @@ export namespace Prisma {
     NOT?: OrderWhereInput | OrderWhereInput[]
     id?: StringFilter<"Order"> | string
     orderedBooks?: JsonNullableFilter<"Order">
-    status?: StringFilter<"Order"> | string
+    status?: EnumOrderStatusNullableFilter<"Order"> | $Enums.OrderStatus | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
     userId?: StringFilter<"Order"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
@@ -6555,7 +6587,7 @@ export namespace Prisma {
   export type OrderOrderByWithRelationInput = {
     id?: SortOrder
     orderedBooks?: SortOrderInput | SortOrder
-    status?: SortOrder
+    status?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -6567,7 +6599,7 @@ export namespace Prisma {
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
     orderedBooks?: JsonNullableFilter<"Order">
-    status?: StringFilter<"Order"> | string
+    status?: EnumOrderStatusNullableFilter<"Order"> | $Enums.OrderStatus | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
     userId?: StringFilter<"Order"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
@@ -6576,7 +6608,7 @@ export namespace Prisma {
   export type OrderOrderByWithAggregationInput = {
     id?: SortOrder
     orderedBooks?: SortOrderInput | SortOrder
-    status?: SortOrder
+    status?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     userId?: SortOrder
     _count?: OrderCountOrderByAggregateInput
@@ -6590,7 +6622,7 @@ export namespace Prisma {
     NOT?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Order"> | string
     orderedBooks?: JsonNullableWithAggregatesFilter<"Order">
-    status?: StringWithAggregatesFilter<"Order"> | string
+    status?: EnumOrderStatusNullableWithAggregatesFilter<"Order"> | $Enums.OrderStatus | null
     createdAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
     userId?: StringWithAggregatesFilter<"Order"> | string
   }
@@ -6863,7 +6895,7 @@ export namespace Prisma {
   export type OrderCreateInput = {
     id?: string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: string
+    status?: $Enums.OrderStatus | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutOrdersInput
   }
@@ -6871,7 +6903,7 @@ export namespace Prisma {
   export type OrderUncheckedCreateInput = {
     id?: string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: string
+    status?: $Enums.OrderStatus | null
     createdAt?: Date | string
     userId: string
   }
@@ -6879,7 +6911,7 @@ export namespace Prisma {
   export type OrderUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutOrdersNestedInput
   }
@@ -6887,7 +6919,7 @@ export namespace Prisma {
   export type OrderUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -6895,7 +6927,7 @@ export namespace Prisma {
   export type OrderCreateManyInput = {
     id?: string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: string
+    status?: $Enums.OrderStatus | null
     createdAt?: Date | string
     userId: string
   }
@@ -6903,14 +6935,14 @@ export namespace Prisma {
   export type OrderUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -7218,6 +7250,13 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type EnumOrderStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -7268,6 +7307,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedJsonNullableFilter<$PrismaModel>
     _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type EnumOrderStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.OrderStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
   }
 
   export type ReviewAndRatingCreateNestedManyWithoutUserInput = {
@@ -7510,6 +7559,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type NullableEnumOrderStatusFieldUpdateOperationsInput = {
+    set?: $Enums.OrderStatus | null
+  }
+
   export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
     create?: XOR<UserCreateWithoutOrdersInput, UserUncheckedCreateWithoutOrdersInput>
     connectOrCreate?: UserCreateOrConnectWithoutOrdersInput
@@ -7628,6 +7681,13 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type NestedEnumOrderStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderStatusNullableFilter<$PrismaModel> | $Enums.OrderStatus | null
+  }
+
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -7661,6 +7721,16 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type NestedEnumOrderStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OrderStatus | EnumOrderStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.OrderStatus[] | ListEnumOrderStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumOrderStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.OrderStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumOrderStatusNullableFilter<$PrismaModel>
+  }
+
   export type ReviewAndRatingCreateWithoutUserInput = {
     id?: string
     review: string
@@ -7688,14 +7758,14 @@ export namespace Prisma {
   export type OrderCreateWithoutUserInput = {
     id?: string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: string
+    status?: $Enums.OrderStatus | null
     createdAt?: Date | string
   }
 
   export type OrderUncheckedCreateWithoutUserInput = {
     id?: string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: string
+    status?: $Enums.OrderStatus | null
     createdAt?: Date | string
   }
 
@@ -7758,7 +7828,7 @@ export namespace Prisma {
     NOT?: OrderScalarWhereInput | OrderScalarWhereInput[]
     id?: StringFilter<"Order"> | string
     orderedBooks?: JsonNullableFilter<"Order">
-    status?: StringFilter<"Order"> | string
+    status?: EnumOrderStatusNullableFilter<"Order"> | $Enums.OrderStatus | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
     userId?: StringFilter<"Order"> | string
   }
@@ -8108,7 +8178,7 @@ export namespace Prisma {
   export type OrderCreateManyUserInput = {
     id?: string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: string
+    status?: $Enums.OrderStatus | null
     createdAt?: Date | string
   }
 
@@ -8136,21 +8206,21 @@ export namespace Prisma {
   export type OrderUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     orderedBooks?: NullableJsonNullValueInput | InputJsonValue
-    status?: StringFieldUpdateOperationsInput | string
+    status?: NullableEnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
